@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+       
+        {%if flag %}
+        <!-- <center>
+            <div>
+                {% for msg in messages %}
+                {{msg}}{% endfor %}
+                {% if error_message %}
+                {{error_message}}
+                {% endif %}
+            </div>
+        </center> -->
+        <h2>Your package is {{p}}</h2>
+
+        {%else%}
+        <center>
+            <div>
+                {% for msg in messages %}
+                {{msg}}{% endfor %}
+                {% if error_message %}
+                {{error_message}}
+                {% endif %}
+            </div>
+        </center>
+        <form method="POST">{%csrf_token%}
+            <div><br>
+
+                <select name="dropdown">
+                    <option selected="selected" disabled>Select package amount:</option>
+                    <option value="1000">1000</option>
+                    <option value="500">500</option>
+                    <option value="250">250</option> 
+                </select>
+
+                <select name="dropd">
+                    <option selected="selected" disabled>Select payment method:</option>
+                    <option value=”easypaisa”>easypaisa</option>
+                    <option value=”jazzcash”>jazzcash </option>
+                </select>
+                <input type="number" name="tid" id="tid"><br><br>
+                <input type="submit" value="submit">
+            </div>
+        </form>
+    </center>
+    <!-- <center>
+        <div>
+            {% for msg in messages %} -->
+            <!-- {{msg}}{% endfor %} -->
+            <!-- {% if error_message %}
+            {{error_message}}
+            {% endif %} -->
+        </div>
+    <!-- </center> --> 
+    {%endif%}
+</body>
+
+</html>

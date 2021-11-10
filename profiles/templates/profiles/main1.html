@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% url 'profiles' %}
+{% block title %}
+my recs
+{% endblock title %}
+
+{% block content %}
+    {% if my_recs %}
+        <h1>My Direct refferals:</h1>
+        <ul>
+            {% for p in my_recs %}
+                <li>{{p.user}}</li>
+            {% endfor %}
+        </ul>
+        <h3>Un direct refferals</h3>
+        <ul>
+            {% for p in my_recs1 %}
+                <li>{{p.user}}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Un direct ke direct refferals</h3>
+        <ul>
+            {% for p in my_recs2 %}
+                <li>{{p.user}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>You didn't recommend anyone yet...</h1>
+    {% endif %}
+{% endblock content %}

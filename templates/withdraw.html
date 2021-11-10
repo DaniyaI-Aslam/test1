@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%if flag%}
+        <h1>withdraw</h1>
+        <h1>ads earning {{from_ads}}</h1>
+        <h1>from first {{from_first}}</h1>
+        <h1>from second {{from_second}}</h1>
+        <h1>from third {{from_third}}</h1>
+        <h1>total {{total}} will be withraw</h1>
+        <center>
+        <form action="" method = "POST">
+            {% csrf_token %}
+            <select name="dropd">
+                <option selected="selected" disabled>Select payment method:</option>
+                <option value=”easypaisa”>easypaisa</option>
+                <option value=”jazzcash”>jazzcash</option>
+            </select>
+            <br><br>
+            <input type="text" name="name" id="name" placeholder="account holder name">
+            <br><br>
+            <input type="number" name="number" id="number" placeholder="account no."><br><br>
+            <input type="submit" value="submit">
+            
+
+        </form>
+        {% for msg in messages %}
+        {{msg}}
+        {% endfor %}
+        </center>
+    {%else%}
+        <h1> your package is {{price}} and your balance is less than {{price}} i.e {{total}}</h1>
+    {% endif %}
+</body>
+</html>

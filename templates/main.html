@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+home
+
+{% endblock title %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="ui grid">
+    <div class="row">
+        <h3>
+            <center>{{request.user}}</center>
+        </h3>
+        <h3>My Earnings:</h3>
+        <div style="width: 400px;height: 100px;border-style: solid;">
+            <center><b>{{ money }}Rs</b></center>
+        </div>
+
+        <h3>Earnings from refferal:</h3>
+        <div style="width: 400px;height:200px;border-style: solid;">
+            <center><b>From direct-refferals : {{ variable }}Rs</b></center>
+            <br>
+            <center><b>From Un-direct-refferals: {{ variab }}Rs</b></center>
+            <br>
+            <center><b>From Un-directs-direct-refferals: {{ vari }}Rs</b></center>
+        </div>
+        <br><br>
+        <h3>you have {{ad }}ads</h3>
+        <button><a href="{% url 'daily-ads' %}">daily-ads</a></button>
+        <div class="eight wide column">
+            <br><br><br>
+            <button class="ui button"> Change password</button>
+            <a href="{% url 'logout' %} "><button class="ui button negative"> Logout</button></a>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<br>
+<center>
+    <div>
+        {% for msg in messages %}
+        {{msg}}
+        {% endfor %}</div>
+</center>
+<br>
+<a href="{% url 'signup-view' %}">
+    <button class="btn btn-primary">Registration Form</button>
+</a>
+<p>already registered <a href="{% url 'login' %}">login here</a></p>
+{% endif %}
+
+
+
+
+
+
+{% endblock content %}
